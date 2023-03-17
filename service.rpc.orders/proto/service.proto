@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package emre;
+
+option go_package = "github.com/yunuseskisan/touch/service.rpc.orders/proto;ordersproto";
+
+import "service.rpc.orders/proto/order.proto";
+
+service OrdersService {
+  rpc CreateOrder (CreateOrderRequest) returns (Order) {}
+  rpc ListOrders (ListOrdersRequest) returns (ListOrdersResponse) {}
+}
+
+message CreateOrderRequest {
+  string request_id = 1;
+
+  Order order = 2;
+}
+
+message ListOrdersRequest {
+  uint64 limit = 1;
+
+  uint64 offset = 2;
+}
+
+message ListOrdersResponse {
+  repeated Order orders = 1;
+}
+
+

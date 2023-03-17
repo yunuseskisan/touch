@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package emre;
+
+option go_package = "github.com/yunuseskisan/touch/service.rpc.users/proto;usersproto";
+
+import "service.rpc.users/proto/user.proto";
+
+service UsersService {
+  rpc CreateUser (CreateUserRequest) returns (User) {}
+  rpc GetUser (GetUserRequest) returns (User) {}
+  rpc ListUsers (ListUsersRequest) returns (ListUsersResponse) {}
+}
+
+message CreateUserRequest {
+  string request_id = 1;
+
+  User user = 2;
+}
+
+message GetUserRequest {
+  string id = 1;
+}
+
+message ListUsersRequest {
+  uint64 limit = 1;
+
+  uint64 offset = 2;
+}
+
+message ListUsersResponse {
+  repeated User users = 1;
+}
+
+

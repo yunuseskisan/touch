@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package emre;
+
+option go_package = "github.com/yunuseskisan/touch/service.rpc.users/proto;usersproto";
+
+import "google/protobuf/timestamp.proto";
+
+message User {
+  string id = 1;
+
+  google.protobuf.Timestamp created_at = 2;
+
+  google.protobuf.Timestamp updated_at = 3;
+
+  string first_name = 4;
+
+  string last_name = 5;
+}

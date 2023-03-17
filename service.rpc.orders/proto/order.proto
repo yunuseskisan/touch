@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+package emre;
+
+option go_package = "github.com/yunuseskisan/touch/service.rpc.orders/proto;ordersproto";
+
+import "google/protobuf/timestamp.proto";
+import "service.rpc.assets/proto/asset.proto";
+
+message Order {
+  string id = 1;
+
+  google.protobuf.Timestamp created_at = 2;
+
+  google.protobuf.Timestamp updated_at = 3;
+
+  AssetType asset_type = 4;
+
+  Instruction instruction = 5;
+
+  int32 amount = 6;
+
+  Currency currency = 7;
+}
+
+enum Instruction {
+  INSTRUCTION_UNKNOWN = 0;
+
+  INSTRUCTION_BUY = 1;
+
+  INSTRUCTION_INVEST = 2;
+
+  INSTRUCTION_SELL = 3;
+
+  INSTRUCTION_RAISE = 4;
+}
+
+enum Currency {
+  CURRENCY_UNKNOWN = 0;
+
+  CURRENCY_UNITS = 1;
+
+  CURRENCY_GBP = 3;
+}

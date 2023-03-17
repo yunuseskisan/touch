@@ -1,0 +1,54 @@
+syntax = "proto3";
+
+package emre;
+
+option go_package = "github.com/yunuseskisan/touch/service.rpc.assets/proto;assetsproto";
+
+import "service.rpc.assets/proto/asset.proto";
+
+service AssetsService {
+  rpc CreateAsset (CreateAssetRequest) returns (Asset) {}
+  rpc GetAsset (GetAssetRequest) returns (Asset) {}
+  rpc ListAssets (ListAssetsRequest) returns (ListAssetsResponse) {}
+  rpc BuyAsset (BuyAssetRequest) returns (Asset) {}
+  rpc SellAsset (SellAssetRequest) returns (Asset) {}
+}
+
+message CreateAssetRequest {
+  string request_id = 1;
+
+  Asset asset = 2;
+}
+
+message GetAssetRequest {
+  string id = 1;
+}
+
+message ListAssetsRequest {
+  uint64 limit = 1;
+
+  uint64 offset = 2;
+
+  repeated string user_ids = 3;
+}
+
+message ListAssetsResponse {
+  repeated Asset assets = 1;
+}
+
+message BuyAssetRequest {
+  string request_id = 1;
+
+  string asset_id = 2;
+
+  int32 units = 3;
+}
+
+message SellAssetRequest {
+  string request_id = 1;
+
+  string asset_id = 2;
+
+  int32 units = 3;
+}
+

@@ -1,0 +1,17 @@
+#!/bin/bash
+
+if [ -z $1 ]
+  then
+    echo "No service name supplied."
+    exit 1
+fi
+
+if [ -z $2 ]
+  then
+    echo "No image tag supplied."
+    exit 1
+fi
+
+docker build -t ${1}:${2} -f ./Dockerfile --build-arg SERVICE=${1} .
+
+echo "✅ Built docker image ${1}:${2}"
